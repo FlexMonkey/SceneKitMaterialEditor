@@ -11,13 +11,13 @@ import SceneKit
 
 class MaterialPreviewWidget: SCNView
 {
-    let spehere = SCNSphere(radius: 6)
+    let sphere = SCNSphere(radius: 6)
     
     var material: SCNMaterial = SCNMaterial()
     {
         didSet
         {
-            spehere.materials = [material]
+            sphere.materials = [material]
         }
     }
     
@@ -47,11 +47,11 @@ class MaterialPreviewWidget: SCNView
         
         // sphere...
         
-        let sphereNode = SCNNode(geometry: spehere)
+        let sphereNode = SCNNode(geometry: sphere)
         sphereNode.position = SCNVector3(x: 0, y: 0, z: 0)
         thisScene.rootNode.addChildNode(sphereNode)
         
-        spehere.materials = [material]
+        sphere.materials = [material]
         
         // ambient light...
         
