@@ -13,6 +13,15 @@
 		BEF3E5621A74C642006F10F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5611A74C642006F10F9 /* Images.xcassets */; };
 		BEF3E5651A74C642006F10F9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5631A74C642006F10F9 /* LaunchScreen.xib */; };
 		BEF3E5711A74C643006F10F9 /* SceneKitExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF3E5701A74C643006F10F9 /* SceneKitExperimentTests.swift */; };
+		BEF3E57B1A74C6D4006F10F9 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF3E57A1A74C6D4006F10F9 /* SceneKit.framework */; };
+		BEF3E57D1A74CBE6006F10F9 /* sunny-landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E57C1A74CBE6006F10F9 /* sunny-landscape.jpg */; };
+		BEF3E5801A74D233006F10F9 /* MaterialPreviewWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF3E57F1A74D233006F10F9 /* MaterialPreviewWidget.swift */; };
+		BEF3E5831A74D882006F10F9 /* SliderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF3E5821A74D882006F10F9 /* SliderWidget.swift */; };
+		BEF3E5861A74DE28006F10F9 /* night-sky-stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5851A74DE28006F10F9 /* night-sky-stars.jpg */; };
+		BEF3E5881A74DED2006F10F9 /* 70s-flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5871A74DED2006F10F9 /* 70s-flower.jpg */; };
+		BEF3E58A1A74DF45006F10F9 /* metallic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5891A74DF45006F10F9 /* metallic.jpg */; };
+		BEF3E58C1A74E040006F10F9 /* SegmentedControlWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF3E58B1A74E040006F10F9 /* SegmentedControlWidget.swift */; };
+		BEF3E5921A750A31006F10F9 /* bumpMap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEF3E5911A750A31006F10F9 /* bumpMap.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,15 @@
 		BEF3E56A1A74C643006F10F9 /* SceneKitExperimentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SceneKitExperimentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3E56F1A74C643006F10F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF3E5701A74C643006F10F9 /* SceneKitExperimentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitExperimentTests.swift; sourceTree = "<group>"; };
+		BEF3E57A1A74C6D4006F10F9 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		BEF3E57C1A74CBE6006F10F9 /* sunny-landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sunny-landscape.jpg"; sourceTree = "<group>"; };
+		BEF3E57F1A74D233006F10F9 /* MaterialPreviewWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialPreviewWidget.swift; sourceTree = "<group>"; };
+		BEF3E5821A74D882006F10F9 /* SliderWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderWidget.swift; sourceTree = "<group>"; };
+		BEF3E5851A74DE28006F10F9 /* night-sky-stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "night-sky-stars.jpg"; sourceTree = "<group>"; };
+		BEF3E5871A74DED2006F10F9 /* 70s-flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "70s-flower.jpg"; sourceTree = "<group>"; };
+		BEF3E5891A74DF45006F10F9 /* metallic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metallic.jpg; sourceTree = "<group>"; };
+		BEF3E58B1A74E040006F10F9 /* SegmentedControlWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlWidget.swift; sourceTree = "<group>"; };
+		BEF3E5911A750A31006F10F9 /* bumpMap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bumpMap.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF3E57B1A74C6D4006F10F9 /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +78,7 @@
 		BEF3E54C1A74C642006F10F9 = {
 			isa = PBXGroup;
 			children = (
+				BEF3E57A1A74C6D4006F10F9 /* SceneKit.framework */,
 				BEF3E5571A74C642006F10F9 /* SceneKitExperiment */,
 				BEF3E56D1A74C643006F10F9 /* SceneKitExperimentTests */,
 				BEF3E5561A74C642006F10F9 /* Products */,
@@ -77,6 +97,9 @@
 		BEF3E5571A74C642006F10F9 /* SceneKitExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				BEF3E5841A74DDE3006F10F9 /* assets */,
+				BEF3E5811A74D874006F10F9 /* controls */,
+				BEF3E57E1A74D1FB006F10F9 /* materialPreviewWidget */,
 				BEF3E55A1A74C642006F10F9 /* AppDelegate.swift */,
 				BEF3E55C1A74C642006F10F9 /* ViewController.swift */,
 				BEF3E55E1A74C642006F10F9 /* Main.storyboard */,
@@ -110,6 +133,35 @@
 				BEF3E56F1A74C643006F10F9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEF3E57E1A74D1FB006F10F9 /* materialPreviewWidget */ = {
+			isa = PBXGroup;
+			children = (
+				BEF3E57F1A74D233006F10F9 /* MaterialPreviewWidget.swift */,
+			);
+			name = materialPreviewWidget;
+			sourceTree = "<group>";
+		};
+		BEF3E5811A74D874006F10F9 /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				BEF3E5821A74D882006F10F9 /* SliderWidget.swift */,
+				BEF3E58B1A74E040006F10F9 /* SegmentedControlWidget.swift */,
+			);
+			name = controls;
+			sourceTree = "<group>";
+		};
+		BEF3E5841A74DDE3006F10F9 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				BEF3E5911A750A31006F10F9 /* bumpMap.jpg */,
+				BEF3E5891A74DF45006F10F9 /* metallic.jpg */,
+				BEF3E5871A74DED2006F10F9 /* 70s-flower.jpg */,
+				BEF3E5851A74DE28006F10F9 /* night-sky-stars.jpg */,
+				BEF3E57C1A74CBE6006F10F9 /* sunny-landscape.jpg */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,8 +245,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF3E5601A74C642006F10F9 /* Main.storyboard in Resources */,
+				BEF3E5881A74DED2006F10F9 /* 70s-flower.jpg in Resources */,
+				BEF3E58A1A74DF45006F10F9 /* metallic.jpg in Resources */,
+				BEF3E5861A74DE28006F10F9 /* night-sky-stars.jpg in Resources */,
+				BEF3E5921A750A31006F10F9 /* bumpMap.jpg in Resources */,
 				BEF3E5651A74C642006F10F9 /* LaunchScreen.xib in Resources */,
 				BEF3E5621A74C642006F10F9 /* Images.xcassets in Resources */,
+				BEF3E57D1A74CBE6006F10F9 /* sunny-landscape.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF3E5831A74D882006F10F9 /* SliderWidget.swift in Sources */,
+				BEF3E5801A74D233006F10F9 /* MaterialPreviewWidget.swift in Sources */,
 				BEF3E55D1A74C642006F10F9 /* ViewController.swift in Sources */,
+				BEF3E58C1A74E040006F10F9 /* SegmentedControlWidget.swift in Sources */,
 				BEF3E55B1A74C642006F10F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
