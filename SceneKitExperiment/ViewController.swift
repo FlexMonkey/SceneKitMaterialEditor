@@ -89,6 +89,11 @@ class ViewController: UIViewController, UIPickerViewDelegate
         reflectiveSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
 
     }
+    
+    override func supportedInterfaceOrientations() -> Int
+    {
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    }
 
 }
 

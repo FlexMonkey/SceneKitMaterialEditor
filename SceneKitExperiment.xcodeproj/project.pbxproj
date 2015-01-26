@@ -401,6 +401,7 @@
 				INFOPLIST_FILE = SceneKitExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -411,6 +412,7 @@
 				INFOPLIST_FILE = SceneKitExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -467,6 +469,7 @@
 				BEF3E5761A74C643006F10F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BEF3E5771A74C643006F10F9 /* Build configuration list for PBXNativeTarget "SceneKitExperimentTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +478,7 @@
 				BEF3E5791A74C643006F10F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
