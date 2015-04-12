@@ -52,7 +52,7 @@ class SliderWidget: UIControl
     {
         println(value)
         
-        label.text = title + ": " + NSString(format: "%.3f", Float(value))
+        label.text = title + ": " + (NSString(format: "%.3f", Float(value)) as String)
     }
     
     override func layoutSubviews()
