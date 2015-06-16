@@ -29,15 +29,38 @@ class MaterialPreviewWidget: SCNView
             if let filter = filter
             {
                 sphereNode.filters = [filter]
+                setDrosteParams()
+            }
+            else
+            {
+                sphereNode.filters = nil
             }
         }
+    }
+    
+    func setDrosteParams()
+    {
+        if let filter = sphereNode.filters?[0] where sphereNode.filters?[0].name == "CIDroste"
+        {            
+            filter.setValue(CIVector(x: frame.width + 125, y: frame.height - 75), forKey: "inputInsetPoint0")
+            filter.setValue(CIVector(x: frame.width - 75, y: frame.height + 125), forKey: "inputInsetPoint1")
+        }
+    }
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        setDrosteParams()
     }
     
     override func didMoveToSuperview()
     {
         backgroundColor = UIColor(red: 0, green: 0, blue: 0.5, alpha: 1.0)
-        layer.borderColor = UIColor.darkGrayColor().CGColor
-        layer.borderWidth = 1
+        layer.cornerRadius = 5
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 2
+        layer.masksToBounds = true
         
         let thisScene = SCNScene()
         

@@ -35,6 +35,8 @@ class SliderWidget: UIControl
         slider.addTarget(self, action: "sliderChangeHandler", forControlEvents: .ValueChanged)
         
         layer.cornerRadius = 5
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 2
         layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
         
         addSubview(slider)
@@ -50,8 +52,6 @@ class SliderWidget: UIControl
     
     func updateLabel()
     {
-        print(value)
-        
         label.text = title + ": " + (NSString(format: "%.3f", Float(value)) as String)
     }
     

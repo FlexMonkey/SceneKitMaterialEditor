@@ -31,6 +31,8 @@ class SegmentedFilterControlWidget: UIControl
         segmentedControl.addTarget(self, action: "segmentedControlChangeHandler", forControlEvents: .ValueChanged)
         
         layer.cornerRadius = 5
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 2
         layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
         
         addSubview(segmentedControl)
@@ -49,11 +51,11 @@ class SegmentedFilterControlWidget: UIControl
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            returnFilter = CIFilter(name: "CIDroste")!
+            returnFilter = CIFilter(name: "CIDroste", withInputParameters: ["inputStrands": 4])!
         case 1:
-            returnFilter = CIFilter(name: "CICMYKHalftone", withInputParameters: ["inputWidth": 15])!
+            returnFilter = CIFilter(name: "CICMYKHalftone", withInputParameters: ["inputWidth": 20])!
         case 2:
-            returnFilter = CIFilter(name: "CIPixellate", withInputParameters: [kCIInputScaleKey: 20])!
+            returnFilter = CIFilter(name: "CIPixellate", withInputParameters: [kCIInputScaleKey: 30])!
         default:
             returnFilter = nil
         }
@@ -91,6 +93,8 @@ class SegmentedControlWidget: UIControl
         segmentedControl.addTarget(self, action: "segmentedControlChangeHandler", forControlEvents: .ValueChanged)
         
         layer.cornerRadius = 5
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 2
         layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
         
         addSubview(segmentedControl)

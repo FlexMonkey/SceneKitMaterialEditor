@@ -12,72 +12,90 @@ import SceneKit
 class ViewController: UIViewController, UIPickerViewDelegate
 {
     let materialPreviewWidget = MaterialPreviewWidget()
-    let widgetWidth: Int = 300
     
-    let fresnelExponentSlider = SliderWidget(frame: CGRectZero)
-    let shininessSlider = SliderWidget(frame: CGRectZero)
-    let transparencySlider = SliderWidget(frame: CGRectZero)
+    let fresnelExponentSlider = SliderWidget()
+    let shininessSlider = SliderWidget()
+    let transparencySlider = SliderWidget()
     
-    let specularSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let diffuseSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let reflectiveSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let normalSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
+    let specularSegmentedControl = SegmentedControlWidget()
+    let diffuseSegmentedControl = SegmentedControlWidget()
+    let reflectiveSegmentedControl = SegmentedControlWidget()
+    let normalSegmentedControl = SegmentedControlWidget()
     
-    let filterControl = SegmentedFilterControlWidget(frame: CGRectZero)
+    let filterControl = SegmentedFilterControlWidget()
+    
+    let mainStackView = UIStackView()
+    let controlsView = UIStackView()
+    let controlsLeftColumn = UIStackView()
+    let controlsRightColumn = UIStackView()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
     
-        view.addSubview(materialPreviewWidget)
+        view.addSubview(mainStackView)
         
+        mainStackView.addArrangedSubview(materialPreviewWidget)
+        mainStackView.addArrangedSubview(controlsView)
+        
+        controlsView.addArrangedSubview(controlsLeftColumn)
+        controlsView.addArrangedSubview(controlsRightColumn)
+        
+        controlsLeftColumn.addArrangedSubview(filterControl)
+        controlsLeftColumn.addArrangedSubview(fresnelExponentSlider)
+        controlsLeftColumn.addArrangedSubview(shininessSlider)
+        controlsLeftColumn.addArrangedSubview(transparencySlider)
+        
+        controlsRightColumn.addArrangedSubview(normalSegmentedControl)
+        controlsRightColumn.addArrangedSubview(specularSegmentedControl)
+        controlsRightColumn.addArrangedSubview(diffuseSegmentedControl)
+        controlsRightColumn.addArrangedSubview(reflectiveSegmentedControl) 
+        
+        mainStackView.axis = UILayoutConstraintAxis.Vertical
+        controlsView.axis = UILayoutConstraintAxis.Horizontal
+        controlsLeftColumn.axis = UILayoutConstraintAxis.Vertical
+        controlsRightColumn.axis = UILayoutConstraintAxis.Vertical
+
+        mainStackView.distribution = UIStackViewDistribution.FillEqually
+        controlsView.distribution = UIStackViewDistribution.FillEqually
+        controlsLeftColumn.distribution = UIStackViewDistribution.FillEqually
+        controlsRightColumn.distribution = UIStackViewDistribution.FillEqually
+        
+        for widget in [filterControl, fresnelExponentSlider, shininessSlider, transparencySlider, specularSegmentedControl, diffuseSegmentedControl, reflectiveSegmentedControl, normalSegmentedControl]
+        {
+            widget.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
+        }
+        
+        setWidgetTitles()
+        setDefaults()
+        propertySliderChange()
+    }
+
+    func setWidgetTitles()
+    {
         fresnelExponentSlider.title = "Fresnel Exponent"
         shininessSlider.title = "Shininess"
         transparencySlider.title = "Transparency"
         filterControl.title = "Filter"
-        
-        view.addSubview(fresnelExponentSlider)
-        view.addSubview(shininessSlider)
-        view.addSubview(transparencySlider)
-        view.addSubview(filterControl)
-        
         specularSegmentedControl.title = "Specular"
         diffuseSegmentedControl.title = "Diffuse"
         reflectiveSegmentedControl.title = "Reflective"
         normalSegmentedControl.title = "Normal"
-        
-        view.addSubview(specularSegmentedControl)
-        view.addSubview(diffuseSegmentedControl)
-        view.addSubview(reflectiveSegmentedControl)
-        view.addSubview(normalSegmentedControl)
-        
-        fresnelExponentSlider.value = materialPreviewWidget.material.fresnelExponent
-        shininessSlider.value = materialPreviewWidget.material.shininess
-        transparencySlider.value = materialPreviewWidget.material.transparency
-        
-        filterControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        
-        fresnelExponentSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        shininessSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        transparencySlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        
-        specularSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        diffuseSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        reflectiveSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        normalSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        
+    }
+    
+    func setDefaults()
+    {
         normalSegmentedControl.segmentedControl.selectedSegmentIndex = 4
         specularSegmentedControl.segmentedControl.selectedSegmentIndex = 3
         diffuseSegmentedControl.segmentedControl.selectedSegmentIndex = 7
         reflectiveSegmentedControl.segmentedControl.selectedSegmentIndex = 3
         
+        transparencySlider.value = 1.0
         shininessSlider.value = 0.1
         fresnelExponentSlider.value = 0.25
         filterControl.segmentedControl.selectedSegmentIndex = 5
-        
-        propertySliderChange()
     }
-
+    
     func propertySliderChange()
     {
         materialPreviewWidget.filter = filterControl.value
@@ -92,28 +110,21 @@ class ViewController: UIViewController, UIPickerViewDelegate
         materialPreviewWidget.material.normal.contents = normalSegmentedControl.value
     }
 
-    
     override func viewDidLayoutSubviews()
     {
-        let xPosition: Int = Int(view.frame.width) / 2 - widgetWidth / 2
-        materialPreviewWidget.frame = CGRect(x: xPosition, y: 50, width: widgetWidth, height: widgetWidth)
+        super.viewDidLayoutSubviews()
         
-        filterControl.frame = CGRect(x: 0, y: view.frame.height - 400 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        fresnelExponentSlider.frame = CGRect(x: 0, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        shininessSlider.frame = CGRect(x: 0, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        transparencySlider.frame = CGRect(x: 0, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-       
-        normalSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 400 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        specularSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        diffuseSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        reflectiveSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-
+        let top = topLayoutGuide.length
+        let bottom = bottomLayoutGuide.length
+        
+        mainStackView.frame = CGRect(x: 0, y: top, width: view.frame.width, height: view.frame.height - top - bottom).rectByInsetting(dx: 10, dy: 10)
+        
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.controlsView.axis = self.view.frame.width < self.view.frame.height ? UILayoutConstraintAxis.Vertical : UILayoutConstraintAxis.Horizontal
+        }
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask
-    {
-        return UIInterfaceOrientationMask.Landscape
-    }
 
 }
 
