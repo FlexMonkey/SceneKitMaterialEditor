@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIPickerViewDelegate
     let reflectiveSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
     let normalSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
     
+    let filterControl = SegmentedFilterControlWidget(frame: CGRectZero)
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -32,10 +34,12 @@ class ViewController: UIViewController, UIPickerViewDelegate
         fresnelExponentSlider.title = "Fresnel Exponent"
         shininessSlider.title = "Shininess"
         transparencySlider.title = "Transparency"
+        filterControl.title = "Filter"
         
         view.addSubview(fresnelExponentSlider)
         view.addSubview(shininessSlider)
         view.addSubview(transparencySlider)
+        view.addSubview(filterControl)
         
         specularSegmentedControl.title = "Specular"
         diffuseSegmentedControl.title = "Diffuse"
@@ -51,6 +55,8 @@ class ViewController: UIViewController, UIPickerViewDelegate
         shininessSlider.value = materialPreviewWidget.material.shininess
         transparencySlider.value = materialPreviewWidget.material.transparency
         
+        filterControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
+        
         fresnelExponentSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
         shininessSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
         transparencySlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
@@ -59,10 +65,23 @@ class ViewController: UIViewController, UIPickerViewDelegate
         diffuseSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
         reflectiveSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
         normalSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
+        
+        normalSegmentedControl.segmentedControl.selectedSegmentIndex = 4
+        specularSegmentedControl.segmentedControl.selectedSegmentIndex = 3
+        diffuseSegmentedControl.segmentedControl.selectedSegmentIndex = 7
+        reflectiveSegmentedControl.segmentedControl.selectedSegmentIndex = 3
+        
+        shininessSlider.value = 0.1
+        fresnelExponentSlider.value = 0.25
+        filterControl.segmentedControl.selectedSegmentIndex = 5
+        
+        propertySliderChange()
     }
 
     func propertySliderChange()
     {
+        materialPreviewWidget.filter = filterControl.value
+        
         materialPreviewWidget.material.fresnelExponent = fresnelExponentSlider.value
         materialPreviewWidget.material.shininess = shininessSlider.value
         materialPreviewWidget.material.transparency = transparencySlider.value
@@ -79,6 +98,7 @@ class ViewController: UIViewController, UIPickerViewDelegate
         let xPosition: Int = Int(view.frame.width) / 2 - widgetWidth / 2
         materialPreviewWidget.frame = CGRect(x: xPosition, y: 50, width: widgetWidth, height: widgetWidth)
         
+        filterControl.frame = CGRect(x: 0, y: view.frame.height - 400 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
         fresnelExponentSlider.frame = CGRect(x: 0, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
         shininessSlider.frame = CGRect(x: 0, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
         transparencySlider.frame = CGRect(x: 0, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
@@ -90,9 +110,9 @@ class ViewController: UIViewController, UIPickerViewDelegate
 
     }
     
-    override func supportedInterfaceOrientations() -> Int
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask
     {
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+        return UIInterfaceOrientationMask.Landscape
     }
 
 }

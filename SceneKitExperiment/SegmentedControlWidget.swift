@@ -8,6 +8,66 @@
 
 import UIKit
 
+class SegmentedFilterControlWidget: UIControl
+{
+    let items = ["Droste", "CMYK Halftone", "Pixellate", "None"]
+    
+    var segmentedControl: UISegmentedControl!
+    
+    let label = UILabel(frame: CGRectZero)
+    
+    var title: String = ""
+    {
+        didSet
+        {
+            label.text = title
+        }
+    }
+    
+    override func didMoveToSuperview()
+    {
+        segmentedControl = UISegmentedControl(items: items)
+        
+        segmentedControl.addTarget(self, action: "segmentedControlChangeHandler", forControlEvents: .ValueChanged)
+        
+        layer.cornerRadius = 5
+        layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
+        
+        addSubview(segmentedControl)
+        addSubview(label)
+    }
+    
+    func segmentedControlChangeHandler()
+    {
+        sendActionsForControlEvents(.ValueChanged)
+    }
+    
+    var value: CIFilter?
+    {
+        let returnFilter: CIFilter?
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            returnFilter = CIFilter(name: "CIDroste")!
+        case 1:
+            returnFilter = CIFilter(name: "CICMYKHalftone", withInputParameters: ["inputWidth": 15])!
+        case 2:
+            returnFilter = CIFilter(name: "CIPixellate", withInputParameters: [kCIInputScaleKey: 20])!
+        default:
+            returnFilter = nil
+        }
+        
+        return returnFilter
+    }
+    
+    override func layoutSubviews()
+    {
+        label.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height / 2).rectByInsetting(dx: 5, dy: 5)
+        segmentedControl.frame = CGRect(x: 0, y: frame.height / 2, width: frame.width, height: frame.height / 2).rectByInsetting(dx: 5, dy: 5)
+    }
+}
+
 class SegmentedControlWidget: UIControl
 {
     let items = [TextureContents.Metallic.rawValue, TextureContents.Seventies.rawValue, TextureContents.Night.rawValue, TextureContents.Sunny.rawValue, TextureContents.Bump.rawValue, TextureContents.Red.rawValue, TextureContents.Green.rawValue, TextureContents.Blue.rawValue, TextureContents.White.rawValue, TextureContents.Black.rawValue]

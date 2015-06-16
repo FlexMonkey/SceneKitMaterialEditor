@@ -11,6 +11,7 @@ import SceneKit
 
 class MaterialPreviewWidget: SCNView
 {
+    var sphereNode: SCNNode!
     let sphere = SCNSphere(radius: 6)
     
     var material: SCNMaterial = SCNMaterial()
@@ -18,6 +19,17 @@ class MaterialPreviewWidget: SCNView
         didSet
         {
             sphere.materials = [material]
+        }
+    }
+    
+    var filter: CIFilter?
+    {
+        didSet
+        {
+            if let filter = filter
+            {
+                sphereNode.filters = [filter]
+            }
         }
     }
     
@@ -47,7 +59,7 @@ class MaterialPreviewWidget: SCNView
         
         // sphere...
         
-        let sphereNode = SCNNode(geometry: sphere)
+        sphereNode = SCNNode(geometry: sphere)
         sphereNode.position = SCNVector3(x: 0, y: 0, z: 0)
         thisScene.rootNode.addChildNode(sphereNode)
         
@@ -81,5 +93,7 @@ class MaterialPreviewWidget: SCNView
         floorNode.position = SCNVector3(x: 0, y: -6.2, z: 0)
         
         thisScene.rootNode.addChildNode(floorNode)
+        
+        // sphereNode.filters = [pixellate]
     }
 }

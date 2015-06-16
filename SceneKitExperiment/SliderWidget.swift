@@ -50,7 +50,7 @@ class SliderWidget: UIControl
     
     func updateLabel()
     {
-        println(value)
+        print(value)
         
         label.text = title + ": " + (NSString(format: "%.3f", Float(value)) as String)
     }
