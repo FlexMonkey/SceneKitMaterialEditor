@@ -117,7 +117,7 @@ class ViewController: UIViewController, UIPickerViewDelegate
         let top = topLayoutGuide.length
         let bottom = bottomLayoutGuide.length
         
-        mainStackView.frame = CGRect(x: 0, y: top, width: view.frame.width, height: view.frame.height - top - bottom).rectByInsetting(dx: 10, dy: 10)
+        mainStackView.frame = CGRect(x: 0, y: top, width: view.frame.width, height: view.frame.height - top - bottom).insetBy(dx: 10, dy: 10)
         
         dispatch_async(dispatch_get_main_queue())
         {
