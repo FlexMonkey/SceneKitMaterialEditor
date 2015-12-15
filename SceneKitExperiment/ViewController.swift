@@ -79,20 +79,15 @@ class ViewController: UIViewController, UIPickerViewDelegate
         let xPosition: Int = Int(view.frame.width) / 2 - widgetWidth / 2
         materialPreviewWidget.frame = CGRect(x: xPosition, y: 50, width: widgetWidth, height: widgetWidth)
         
-        fresnelExponentSlider.frame = CGRect(x: 0, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        shininessSlider.frame = CGRect(x: 0, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        transparencySlider.frame = CGRect(x: 0, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
+        fresnelExponentSlider.frame = CGRect(x: 0, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
+        shininessSlider.frame = CGRect(x: 0, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
+        transparencySlider.frame = CGRect(x: 0, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
        
-        normalSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 400 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        specularSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        diffuseSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
-        reflectiveSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).rectByInsetting(dx: 5, dy: 5)
+        normalSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 400 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
+        specularSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 300 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
+        diffuseSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 200 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
+        reflectiveSegmentedControl.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 100 , width: view.frame.width / 2, height: 80).insetBy(dx: 5, dy: 5)
 
-    }
-    
-    override func supportedInterfaceOrientations() -> Int
-    {
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 
 }
