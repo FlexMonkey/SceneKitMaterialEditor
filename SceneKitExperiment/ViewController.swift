@@ -11,7 +11,8 @@ import SceneKit
 
 class ViewController: UIViewController, UIPickerViewDelegate
 {
-    let materialPreviewWidget = MaterialPreviewWidget()
+    let materialPreviewWidget = MaterialPreviewWidget(frame: CGRectZero,
+        options: [SCNPreferredRenderingAPIKey : SCNRenderingAPI.OpenGLES2.rawValue])
     
     let fresnelExponentSlider = SliderWidget()
     let shininessSlider = SliderWidget()
