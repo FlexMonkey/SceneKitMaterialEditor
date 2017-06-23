@@ -14,7 +14,7 @@ class SegmentedControlWidget: UIControl
     
     var segmentedControl: UISegmentedControl!
     
-    let label = UILabel(frame: CGRectZero)
+    let label = UILabel(frame: CGRect.zero)
     
     var title: String = ""
     {
@@ -28,10 +28,10 @@ class SegmentedControlWidget: UIControl
     {
         segmentedControl = UISegmentedControl(items: items)
         
-        segmentedControl.addTarget(self, action: "segmentedControlChangeHandler", forControlEvents: .ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(SegmentedControlWidget.segmentedControlChangeHandler), for: .valueChanged)
         
         layer.cornerRadius = 5
-        layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
+        layer.backgroundColor = UIColor.darkGray.withAlphaComponent(0.25).cgColor
         
         addSubview(segmentedControl)
         addSubview(label)
@@ -39,7 +39,7 @@ class SegmentedControlWidget: UIControl
     
     func segmentedControlChangeHandler()
     {
-        sendActionsForControlEvents(.ValueChanged)
+        sendActions(for: .valueChanged)
     }
     
     var value: AnyObject?
@@ -64,15 +64,15 @@ class SegmentedControlWidget: UIControl
             case TextureContents.Bump:
                 return UIImage(named: "bumpMap.jpg")
             case TextureContents.Red:
-                return UIColor.redColor()
+                return UIColor.red
             case TextureContents.Green:
-                return UIColor.greenColor()
+                return UIColor.green
             case TextureContents.Blue:
-                return UIColor.blueColor()
+                return UIColor.blue
             case TextureContents.White:
-                return UIColor.whiteColor()
+                return UIColor.white
             case TextureContents.Black:
-                return UIColor.blackColor()
+                return UIColor.black
             }
         }
     }

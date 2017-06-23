@@ -14,14 +14,14 @@ class ViewController: UIViewController, UIPickerViewDelegate
     let materialPreviewWidget = MaterialPreviewWidget()
     let widgetWidth: Int = 300
     
-    let fresnelExponentSlider = SliderWidget(frame: CGRectZero)
-    let shininessSlider = SliderWidget(frame: CGRectZero)
-    let transparencySlider = SliderWidget(frame: CGRectZero)
+    let fresnelExponentSlider = SliderWidget(frame: CGRect.zero)
+    let shininessSlider = SliderWidget(frame: CGRect.zero)
+    let transparencySlider = SliderWidget(frame: CGRect.zero)
     
-    let specularSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let diffuseSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let reflectiveSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
-    let normalSegmentedControl = SegmentedControlWidget(frame: CGRectZero)
+    let specularSegmentedControl = SegmentedControlWidget(frame: CGRect.zero)
+    let diffuseSegmentedControl = SegmentedControlWidget(frame: CGRect.zero)
+    let reflectiveSegmentedControl = SegmentedControlWidget(frame: CGRect.zero)
+    let normalSegmentedControl = SegmentedControlWidget(frame: CGRect.zero)
     
     override func viewDidLoad()
     {
@@ -51,14 +51,14 @@ class ViewController: UIViewController, UIPickerViewDelegate
         shininessSlider.value = materialPreviewWidget.material.shininess
         transparencySlider.value = materialPreviewWidget.material.transparency
         
-        fresnelExponentSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        shininessSlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        transparencySlider.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
+        fresnelExponentSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        shininessSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        transparencySlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
         
-        specularSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        diffuseSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        reflectiveSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
-        normalSegmentedControl.addTarget(self, action: "propertySliderChange", forControlEvents: UIControlEvents.ValueChanged)
+        specularSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        diffuseSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        reflectiveSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        normalSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
     }
 
     func propertySliderChange()
