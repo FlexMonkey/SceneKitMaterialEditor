@@ -37,7 +37,7 @@ class SegmentedControlWidget: UIControl
         addSubview(label)
     }
     
-    func segmentedControlChangeHandler()
+    @objc func segmentedControlChangeHandler()
     {
         sendActions(for: .valueChanged)
     }

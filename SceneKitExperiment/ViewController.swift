@@ -51,17 +51,17 @@ class ViewController: UIViewController, UIPickerViewDelegate
         shininessSlider.value = materialPreviewWidget.material.shininess
         transparencySlider.value = materialPreviewWidget.material.transparency
         
-        fresnelExponentSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
-        shininessSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
-        transparencySlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        fresnelExponentSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
+        shininessSlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
+        transparencySlider.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
         
-        specularSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
-        diffuseSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
-        reflectiveSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
-        normalSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControlEvents.valueChanged)
+        specularSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
+        diffuseSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
+        reflectiveSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
+        normalSegmentedControl.addTarget(self, action: #selector(ViewController.propertySliderChange), for: UIControl.Event.valueChanged)
     }
 
-    func propertySliderChange()
+    @objc func propertySliderChange()
     {
         materialPreviewWidget.material.fresnelExponent = fresnelExponentSlider.value
         materialPreviewWidget.material.shininess = shininessSlider.value

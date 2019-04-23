@@ -41,7 +41,7 @@ class SliderWidget: UIControl
         addSubview(label)
     }
     
-    func sliderChangeHandler()
+    @objc func sliderChangeHandler()
     {
         value = CGFloat(slider.value)
         
