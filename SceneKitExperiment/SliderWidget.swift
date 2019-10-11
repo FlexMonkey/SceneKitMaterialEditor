@@ -10,8 +10,8 @@ import UIKit
 
 class SliderWidget: UIControl
 {
-    let slider = UISlider(frame: CGRectZero)
-    let label = UILabel(frame: CGRectZero)
+    let slider = UISlider(frame: CGRect.zero)
+    let label = UILabel(frame: CGRect.zero)
     
     var title: String = ""
     {
@@ -32,20 +32,20 @@ class SliderWidget: UIControl
     
     override func didMoveToSuperview()
     {
-        slider.addTarget(self, action: "sliderChangeHandler", forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(SliderWidget.sliderChangeHandler), for: .valueChanged)
         
         layer.cornerRadius = 5
-        layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.25).CGColor
+        layer.backgroundColor = UIColor.darkGray.withAlphaComponent(0.25).cgColor
         
         addSubview(slider)
         addSubview(label)
     }
     
-    func sliderChangeHandler()
+    @objc func sliderChangeHandler()
     {
         value = CGFloat(slider.value)
         
-        sendActionsForControlEvents(.ValueChanged)
+        sendActions(for: .valueChanged)
     }
     
     func updateLabel()

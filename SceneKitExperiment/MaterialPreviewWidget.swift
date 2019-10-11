@@ -24,7 +24,7 @@ class MaterialPreviewWidget: SCNView
     override func didMoveToSuperview()
     {
         backgroundColor = UIColor(red: 0, green: 0, blue: 0.5, alpha: 1.0)
-        layer.borderColor = UIColor.darkGrayColor().CGColor
+        layer.borderColor = UIColor.darkGray.cgColor
         layer.borderWidth = 1
         
         let thisScene = SCNScene()
@@ -56,7 +56,7 @@ class MaterialPreviewWidget: SCNView
         // ambient light...
         
         let ambientLight = SCNLight()
-        ambientLight.type = SCNLightTypeAmbient
+        ambientLight.type = SCNLight.LightType.ambient
         ambientLight.color = UIColor(white: 0.25, alpha: 1.0)
         let ambientLightNode = SCNNode()
         ambientLightNode.light = ambientLight
@@ -66,7 +66,7 @@ class MaterialPreviewWidget: SCNView
         // omni light...
         
         let omniLight = SCNLight()
-        omniLight.type = SCNLightTypeOmni
+        omniLight.type = SCNLight.LightType.omni
         omniLight.color = UIColor(white: 1.0, alpha: 1.0)
         let omniLightNode = SCNNode()
         omniLightNode.light = omniLight
